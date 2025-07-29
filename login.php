@@ -268,7 +268,7 @@ if (isset($_POST['submit'])) {
   .submit_btn{
     width: 100%;
     border-radius:40px ;
-    background-color: yellow;
+    background-color: brown;
     color:white;
   }
   .submit_btn:hover{
