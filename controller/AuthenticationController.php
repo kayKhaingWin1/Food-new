@@ -9,7 +9,8 @@ include_once __DIR__ . '/../vendor/PhpMailer/src/Exception.php';
 include_once __DIR__ . '/../vendor/PhpMailer/src/PHPMailer.php';
 include_once __DIR__ . '/../vendor/PhpMailer/src/SMTP.php';
 
-class AuthenticationController {
+class AuthenticationController
+{
     private $auth;
     function __construct()
     {
@@ -33,31 +34,27 @@ class AuthenticationController {
 
     public function otpVerify($email)
     {
-        $otp = rand(1000,9999);
-   
-        $mailer = new PHPMailer(true);
+        $otp = rand(1000, 9999);
 
+        $mailer = new PHPMailer(true);
         $mailer->isSMTP();
-        $mailer->Host = 'smtp.gmail.com';
+        $mailer->Host = getenv('MAIL_HOST');
         $mailer->SMTPAuth = true;
         $mailer->SMTPSecure = 'tls';
-        $mailer->Port = 587;
+        $mailer->Port = getenv('MAIL_PORT');
 
-        $mailer->Username = "simonzarni03@gmail.com";
-        $mailer->Password = "uszj czrg zowg apxa";
+        $mailer->Username = getenv('MAIL_USERNAME');
+        $mailer->Password = getenv('MAIL_PASSWORD');
 
-        $mailer->setFrom("simonzarni03@gmail.com","Food Order");
+        $mailer->setFrom(getenv('MAIL_FROM'), getenv('MAIL_FROM_NAME'));
         $mailer->addAddress($email);
 
-        $mailer->IsHTML(true);
+        $mailer->isHTML(true);
         $mailer->Subject = "Your account registration is in progress.";
-        $mailer->Body = 'Your OTP code is '.$otp.'.';
+        $mailer->Body = 'Your OTP code is ' . $otp . '.';
 
-        if ($mailer->send())
-        {
+        if ($mailer->send()) {
             return $otp;
         }
     }
 }
-
-?>

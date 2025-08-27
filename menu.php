@@ -142,53 +142,42 @@ $favourite_controller = new FavouriteController();
         </div>
     </div>
 
-    <!-- promotion -->
-    <div class="container-fluid promo-container">
-        <h2 class="mx-5">Find the Promotion</h2>
-        <div class="promo-scroll">
-            <?php
-            foreach ($promotion_restaurants as $promotion_restaurant) {
-            ?>
-                <a href="item.php?restaurant_id=<?php echo $promotion_restaurant['restaurant_id']; ?>">
-                    <div class="promo-item m-4">
-                        <img src="admin/uploads/<?php echo $promotion_restaurant['image']; ?>" class="img-fluid" alt="">
-                        <h5>Get Up To <?php echo $promotion_restaurant['discount']; ?>% Off</h5>
+
+    <div class="container-fluid" style="margin-top: 100px;">
+        <h2 class="mx-3 mx-sm-4 text-center text-sm-start">Find the Promotion</h2>
+        <div class="d-flex flex-row flex-nowrap overflow-auto py-3" style="scrollbar-width: thin; -ms-overflow-style: none;">
+            <?php foreach ($promotion_restaurants as $promotion_restaurant) { ?>
+                <a href="item.php?restaurant_id=<?php echo $promotion_restaurant['restaurant_id']; ?>" class="text-decoration-none me-3 flex-shrink-0" style="width: 200px;">
+                    <div class="position-relative">
+                        <img src="admin/uploads/<?php echo $promotion_restaurant['image']; ?>" class="img-fluid rounded" alt="">
+                        <h5 class="position-absolute top-50 start-50 translate-middle w-100 h-25 px-3 py-2 bg-opacity-50 text-white rounded bg-black">
+                            Get Up To <?php echo $promotion_restaurant['discount']; ?>% Off
+                        </h5>
                     </div>
                 </a>
-            <?php
-            }
-            ?>
+            <?php } ?>
         </div>
     </div>
 
-    <div class="container-fluid scroll-container">
-        <h2 class="mx-5">Your Favourite cuisines</h2>
-        <div class="side-scroll">
-            <?php
-            foreach ($menus as $menu) {
-                if ($menu['status'] == null) {
-            ?>
-                    <div class="scroll-item">
-                        <button class="prev-button">❮</button> <!-- Previous button -->
-                        <a href="restaurants.php?menu_id=<?php echo $menu['id']; ?>">
-                            <div class="d-flex justify-content-center">
-                                <img src="admin/uploads/<?php echo $menu['image']; ?>" class="img-fluid" style="width:130px;heigth:100px;" alt="">
-                            </div>
-                        </a>
-                        <button class="next-button">❯</button> <!-- Next button -->
-                        <div class="text-center">
-                            <p><?php echo $menu['name']; ?></p>
+<div class="container-fluid scroll-container">
+    <h2 class="mx-3 mx-md-5 mb-3">Your Favourite Cuisines</h2>
+    <div class="d-flex flex-nowrap overflow-auto py-3 px-3 px-md-5" style="scrollbar-width: thin; -ms-overflow-style: none;">
+        <?php foreach ($menus as $menu) {
+            if ($menu['status'] == null) { ?>
+                <div class="flex-shrink-0 text-center me-4" style="width: 130px;">
+                    <a href="restaurants.php?menu_id=<?php echo $menu['id']; ?>" class="text-decoration-none">
+                        <div class="d-flex justify-content-center align-items-center mb-2">
+                            <img src="admin/uploads/<?php echo $menu['image']; ?>" class="img-fluid rounded object-fit-cover" alt="<?php echo $menu['name']; ?>" style="height:130px;width:200px">
                         </div>
-                    </div>
-
-            <?php
-                }
-            }
-            ?>
-
-        </div>
-
+                        <p class="small text-truncate mb-0 text-dark"><?php echo $menu['name']; ?></p>
+                    </a>
+                </div>
+        <?php }
+        } ?>
     </div>
+</div>
+
+
 
     <!-- Restaurant -->
 
@@ -201,7 +190,7 @@ $favourite_controller = new FavouriteController();
                 $favouriteData = $isFavourite ? 'true' : 'false';
             ?>
                 <!-- Restaurant card -->
-                <div class="col-12 col-sm-4 col-lg-3">
+                <div class="col-12 col-sm-6 col-lg-3">
                     <div class="card restaurant-display">
                         <!-- Heart icon for favourite -->
                         <i class="bi bi-heart-fill heart-icon <?php echo $favouriteClass; ?>" data-liked="<?php echo $favouriteData; ?>" data-restaurant_id="<?php echo $restaurant['id']; ?>"></i>

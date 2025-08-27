@@ -3,14 +3,21 @@ include_once __DIR__ . "/layout/sidebar.php";
 ?>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12 position-relative">
-            <img src="images/bg4.jpg" class="img-fluid" style="filter: brightness(0.5) contrast(1);height:100vh" alt="">
+        <div class=" col-md-12 position-relative">
+            <img src="images/bg4.jpg" class="img-fluid object-fit-cover" style="filter: brightness(0.5) contrast(1);height:100vh;" alt="">
         </div>
-        <div class="col-md-6 position-absolute top-50 find-meal">
-            <h1>Are you starving</h1> <?php if(isset($_SESSION['name'])) echo $_SESSION['name']; else  echo "no session"; ?>
-            <p>Within a few clicks, find meals that are accessible near you</p>
-            <a href="menu.php" class="btn btn-light">Find Food</a>
+        <div class="d-flex justify-content-center">
+            <div class="position-absolute top-50 start-50 translate-middle text-center text-lg-start find-meal animate__animated animate__fadeIn">
+                <h1 class="fw-bold animate__animated animate__fadeInDown animate__delay-1s">Are you starving?</h1>
+                <p class="fs-6 fs-lg-5 animate__animated animate__fadeInUp animate__delay-2s">
+                    Within a few clicks, find meals that are accessible near you
+                </p>
+                <a href="menu.php" class="btn btn-light fw-bolder px-4 py-2 animate__animated animate__zoomIn animate__delay-3s">
+                    Find Food
+                </a>
+            </div>
         </div>
+
     </div>
 </div>
 
@@ -19,9 +26,9 @@ include_once __DIR__ . "/layout/sidebar.php";
         <div id="carouselExample" class="carousel slide mt-5" data-bs-ride="carousel" data-bs-interval="3000">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="d-flex align-items-center">
+                    <div class="align-items-center d-lg-flex d-md-flex">
                         <div class="col-md-6 mx-5">
-                            <img src="images/bg1.jpg" class="d-block w-100 rounded" style="height: 400px;" alt="...">
+                            <img src="images/bg1.jpg" class="d-block rounded object-fit-cover" style="height: 400px;width:500px;" alt="...">
                         </div>
                         <div class="col-md-6">
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus dicta, quaerat
@@ -33,7 +40,7 @@ include_once __DIR__ . "/layout/sidebar.php";
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="d-flex align-items-center">
+                    <div class="d-lg-flex d-md-flex align-items-center">
                         <div class="col-md-6">
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores libero laborum
                                 pariatur nihil rerum suscipit, quas iusto cum cumque? Cum veniam deserunt, earum
@@ -45,7 +52,7 @@ include_once __DIR__ . "/layout/sidebar.php";
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="d-flex align-items-center">
+                    <div class="d-lg-flex d-md-flex align-items-center">
                         <div class="col-md-6">
                             <img src="images/bg2.jpg" class="d-block w-100 rounded" style="height: 400px;" alt="...">
                         </div>
@@ -100,6 +107,8 @@ include_once __DIR__ . "/layout/sidebar.php";
         </div>
     </div>
 </div>
+
+
 <?php
 include_once __DIR__ . "/layout/footer.php";
 

@@ -78,45 +78,42 @@ $promotions = $promotion_controller->getPromotionByRestaurant($restaurant_id);
                 ?>
             </ol>
         </div>
-        <div class="mx-3">
-            <h4 class=""><?php if (isset($results['restaurant_name'])) echo $results[0]['restaurant_name']; ?></h4>
-            <div class="d-flex justify-content-between">
-                <div class="d-flex">
-                    <div class="restaurant-status">
-                        <span class="btn btn-outline-success">Open</span>
-                    </div>
-                    <div class="delivery-status mx-2 mt-2">
-                        <p>Delivery Available |</p>
-                    </div>
-                    <div class="rating-star mt-2">
-                        <p><i class="bi bi-star-fill"></i><?php echo $summary['average']; ?> <span>(+<?php echo $summary['count']; ?>)</span></p>
-                    </div>
-                    <div>
-                        <a class="btn btn-link" style="color:brown;" href="review.php?restaurant_id=<?php echo $restaurant_id; ?>">
-                            See Review |
-                        </a>
-                    </div>
-                    <div>
-                        <button class="btn btn-link" style="color:brown;" data-toggle="modal" data-target="#infoModal" data-backdrop="false">
-                            Restaurant Info
-                        </button>
-                    </div>
-                    <div>
-                        <button class="btn btn-link text-dark">Voucher Code:</button>
-                        <button id="copyButton" class="btn btn-link text-dark" data-toggle="modal" data-target="#codeModal" data-backdrop="false">
-                            <?php
-                            foreach ($promotions as $promotion) {
-                                echo $promotion['voucher_code'];
-                            }
-                            ?>
-                        </button>
-                    </div>
-                </div>
-                <div>
-                    <button class="btn btn-outline-danger">Add To Favourite</button>
-                </div>
+       <div class="mx-3">
+    <h4 class=""><?php if (isset($results['restaurant_name'])) echo $results[0]['restaurant_name']; ?></h4>
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap">
+
+        <!-- 左侧信息：Open + Delivery + Rating + Review + Restaurant Info + Voucher -->
+        <div class="d-flex flex-wrap mb-2 mb-md-0">
+            <div class="restaurant-status me-2 mb-2 mb-md-0 ">
+                <span class="btn btn-outline-success">Open</span>
+            </div>
+
+            <div class="delivery-status me-2 mb-2 mb-md-0 mt-md-1">
+                <p class="mb-0">Delivery Available |</p>
+            </div>
+
+            <div class="rating-star me-2 mb-2 mb-md-0 mt-md-1">
+                <p class="mb-0"><i class="bi bi-star-fill"></i><?php echo $summary['average']; ?> <span>(+<?php echo $summary['count']; ?>)</span></p>
+            </div>
+
+            <div class="me-2 mb-2 mb-md-0">
+                <a class="btn btn-link p-0" style="color:brown;" href="review.php?restaurant_id=<?php echo $restaurant_id; ?>">See Review |</a>
+            </div>
+
+            <div class="me-2 mb-2 mb-md-0">
+                <button class="btn btn-link p-0" style="color:brown;" data-toggle="modal" data-target="#infoModal" data-backdrop="false">Info</button>
             </div>
         </div>
+
+        <!-- 右侧：Add To Favourite -->
+        <div class="mb-2 mb-md-0">
+            <button class="btn btn-outline-danger">Add To Favourite</button>
+        </div>
+
+    </div>
+</div>
+
 
         <!-- Scrollable modal -->
 

@@ -41,7 +41,6 @@
 
 .find-meal {
   color: rgb(209, 186, 130);
-  margin-left: 10rem;
 }
 
 /* Menu page */
@@ -102,10 +101,6 @@
   position: relative;
 }
 
-.promo-item img {
-  height: 200px;
-}
-
 .scroll-item p {
   text-align: center;
 }
@@ -116,7 +111,7 @@
   transform: translateY(-50%);
   background-color: rgba(49, 49, 49, 0.5);
   color: white;
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 1rem;
   z-index: 10;
   /* Add a higher z-index to keep it above other elements */
 }
