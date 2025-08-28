@@ -47,7 +47,7 @@ $promotions = $promotion_controller->getPromotionByRestaurant($restaurant_id);
         .login-alert {
             position: fixed;
             top: 20px;
-            left: 400px;
+            left: 50px;
             z-index: 1050;
             display: none;
         }
