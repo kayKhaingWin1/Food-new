@@ -9,8 +9,8 @@ include_once __DIR__ . '/../vendor/PhpMailer/src/Exception.php';
 include_once __DIR__ . '/../vendor/PhpMailer/src/PHPMailer.php';
 include_once __DIR__ . '/../vendor/PhpMailer/src/SMTP.php';
 
-require_once __DIR__ . '/../vendor/autoload.php';
-use Dotenv\Dotenv;
+// require_once __DIR__ . '/../vendor/autoload.php';
+// use Dotenv\Dotenv;
 
 
 class AuthenticationController
@@ -35,32 +35,6 @@ class AuthenticationController
     {
         return $this->auth->getUser($id);
     }
-
-    // public function otpVerify($email)
-    // {
-    //     $otp = rand(1000, 9999);
-
-    //     $mailer = new PHPMailer(true);
-    //     $mailer->isSMTP();
-    //     $mailer->Host = getenv('MAIL_HOST');
-    //     $mailer->SMTPAuth = true;
-    //     $mailer->SMTPSecure = 'tls';
-    //     $mailer->Port = getenv('MAIL_PORT');
-
-    //     $mailer->Username = getenv('MAIL_USERNAME');
-    //     $mailer->Password = getenv('MAIL_PASSWORD');
-
-    //     $mailer->setFrom(getenv('MAIL_FROM'), getenv('MAIL_FROM_NAME'));
-    //     $mailer->addAddress($email);
-
-    //     $mailer->isHTML(true);
-    //     $mailer->Subject = "Your account registration is in progress.";
-    //     $mailer->Body = 'Your OTP code is ' . $otp . '.';
-
-    //     if ($mailer->send()) {
-    //         return $otp;
-    //     }
-    // }
 
     public function otpVerify($email)
     {
