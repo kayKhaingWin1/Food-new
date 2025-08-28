@@ -7,8 +7,14 @@ include_once __DIR__ . '/controller/ReviewController.php';
 include_once __DIR__ . '/controller/PromotionController.php';
 include_once __DIR__ . '/controller/FavouriteController.php';
 
-if (isset($_SESSION['id']))
+// if (isset($_SESSION['id']))
+//     $user_id = $_SESSION['id'];
+
+$user_id = null;
+if (isset($_SESSION['id'])) {
     $user_id = $_SESSION['id'];
+}
+
 
 $menu_controller = new MenuController();
 $menus = $menu_controller->getMenus();

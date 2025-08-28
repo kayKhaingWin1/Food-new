@@ -42,9 +42,26 @@ $promotions = $promotion_controller->getPromotionByRestaurant($restaurant_id);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        /* 登录警告提示样式 */
+        .login-alert {
+            position: fixed;
+            top: 20px;
+            left: 400px;
+            z-index: 1050;
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
+    <!-- 登录警告提示 -->
+    <div class="d-flex justify-content-center">
+        <div class="alert alert-warning login-alert" role="alert">
+            <i class="bi bi-exclamation-triangle-fill"></i> Please Login first and then add items to cart!
+        </div>
+    </div>
+
     <div class="container-fluid breadcrumb-menu">
         <div class="row">
             <nav aria-label="breadcrumb">
@@ -78,41 +95,41 @@ $promotions = $promotion_controller->getPromotionByRestaurant($restaurant_id);
                 ?>
             </ol>
         </div>
-       <div class="mx-3">
-    <h4 class=""><?php if (isset($results['restaurant_name'])) echo $results[0]['restaurant_name']; ?></h4>
+        <div class="mx-3">
+            <h4 class=""><?php if (isset($results['restaurant_name'])) echo $results[0]['restaurant_name']; ?></h4>
 
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap">
 
-        <!-- 左侧信息：Open + Delivery + Rating + Review + Restaurant Info + Voucher -->
-        <div class="d-flex flex-wrap mb-2 mb-md-0">
-            <div class="restaurant-status me-2 mb-2 mb-md-0 ">
-                <span class="btn btn-outline-success">Open</span>
-            </div>
+                <!-- 左侧信息：Open + Delivery + Rating + Review + Restaurant Info + Voucher -->
+                <div class="d-flex flex-wrap mb-2 mb-md-0">
+                    <div class="restaurant-status me-2 mb-2 mb-md-0 ">
+                        <span class="btn btn-outline-success">Open</span>
+                    </div>
 
-            <div class="delivery-status me-2 mb-2 mb-md-0 mt-md-1">
-                <p class="mb-0">Delivery Available |</p>
-            </div>
+                    <div class="delivery-status me-2 mb-2 mb-md-0 mt-md-1">
+                        <p class="mb-0">Delivery Available |</p>
+                    </div>
 
-            <div class="rating-star me-2 mb-2 mb-md-0 mt-md-1">
-                <p class="mb-0"><i class="bi bi-star-fill"></i><?php echo $summary['average']; ?> <span>(+<?php echo $summary['count']; ?>)</span></p>
-            </div>
+                    <div class="rating-star me-2 mb-2 mb-md-0 mt-md-1">
+                        <p class="mb-0"><i class="bi bi-star-fill"></i><?php echo $summary['average']; ?> <span>(+<?php echo $summary['count']; ?>)</span></p>
+                    </div>
 
-            <div class="me-2 mb-2 mb-md-0">
-                <a class="btn btn-link p-0" style="color:brown;" href="review.php?restaurant_id=<?php echo $restaurant_id; ?>">See Review |</a>
-            </div>
+                    <div class="me-2 mb-2 mb-md-0">
+                        <a class="btn btn-link p-0" style="color:brown;" href="review.php?restaurant_id=<?php echo $restaurant_id; ?>">See Review |</a>
+                    </div>
 
-            <div class="me-2 mb-2 mb-md-0">
-                <button class="btn btn-link p-0" style="color:brown;" data-toggle="modal" data-target="#infoModal" data-backdrop="false">Info</button>
+                    <div class="me-2 mb-2 mb-md-0">
+                        <button class="btn btn-link p-0" style="color:brown;" data-toggle="modal" data-target="#infoModal" data-backdrop="false">Info</button>
+                    </div>
+                </div>
+
+                <!-- 右侧：Add To Favourite -->
+                <div class="mb-2 mb-md-0">
+                    <button class="btn btn-outline-danger">Add To Favourite</button>
+                </div>
+
             </div>
         </div>
-
-        <!-- 右侧：Add To Favourite -->
-        <div class="mb-2 mb-md-0">
-            <button class="btn btn-outline-danger">Add To Favourite</button>
-        </div>
-
-    </div>
-</div>
 
 
         <!-- Scrollable modal -->
@@ -172,106 +189,106 @@ $promotions = $promotion_controller->getPromotionByRestaurant($restaurant_id);
                                         </div>
                                         <span class="rating-percentage">10%</span>
                                     </div>
-                                    <div class="rating-bar card-item d-flex align-items-center mb-2">
+                                    <div class="rating-bar card-item d-flex align-items-center mb-2>
                                         <span>2 Stars</span>
-                                        <div class="progress flex-grow-1 mx-2">
-                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 5%;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <span class="rating-percentage">5%</span>
+                                        <div class=" progress flex-grow-1 mx-2">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 5%;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <div class="rating-bar card-item d-flex align-items-center mb-2">
-                                        <span>1 Star</span>
-                                        <div class="progress flex-grow-1 mx-2">
-                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 5%;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <span class="rating-percentage">5%</span>
+                                    <span class="rating-percentage">5%</span>
+                                </div>
+                                <div class="rating-bar card-item d-flex align-items-center mb-2">
+                                    <span>1 Star</span>
+                                    <div class="progress flex-grow-1 mx-2">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 5%;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
+                                    <span class="rating-percentage">5%</span>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Comment Cards -->
-                        <div class="card">
-                            <div class="card-body">
-                                <h6>User Comments</h6>
-                                <!-- Comment 1 -->
-                                <div class="comment card-item mb-3">
-                                    <div class="user-profile d-flex align-items-center mb-2">
-                                        <img src="images/food1.png" alt="User profile picture" class="rounded-circle" style="width: 40px; height: 40px;">
-                                        <span><strong>John Doe</strong></span>
-                                        <span class="text-muted">- 2 days ago</span>
-                                    </div>
-                                    <p>The chicken was juicy and flavorful! I ordered a 10-piece bucket and was not disappointed.</p>
+                    <!-- Comment Cards -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h6>User Comments</h6>
+                            <!-- Comment 1 -->
+                            <div class="comment card-item mb-3">
+                                <div class="user-profile d-flex align-items-center mb-2">
+                                    <img src="images/food1.png" alt="User profile picture" class="rounded-circle" style="width: 40px; height: 40px;">
+                                    <span><strong>John Doe</strong></span>
+                                    <span class="text-muted">- 2 days ago</span>
                                 </div>
-                                <!-- Comment 2 -->
-                                <div class="comment card-item mb-3">
-                                    <div class="user-profile d-flex align-items-center mb-2">
-                                        <img src="images/food2.png" alt="User profile picture" class="rounded-circle" style="width: 40px; height: 40px;">
-                                        <span><strong>Jane Smith</strong></span>
-                                        <span class="text-muted">- 3 days ago</span>
-                                    </div>
-                                    <p>Great burgers and fast service. Highly recommend! I bought a meal for my family and everyone loved it!</p>
+                                <p>The chicken was juicy and flavorful! I ordered a 10-piece bucket and was not disappointed.</p>
+                            </div>
+                            <!-- Comment 2 -->
+                            <div class="comment card-item mb-3">
+                                <div class="user-profile d-flex align-items-center mb-2">
+                                    <img src="images/food2.png" alt="User profile picture" class="rounded-circle" style="width: 40px; height: 40px;">
+                                    <span><strong>Jane Smith</strong></span>
+                                    <span class="text-muted">- 3 days ago</span>
                                 </div>
-                                <!-- Comment 3 -->
-                                <div class="comment card-item mb-3">
-                                    <div class="user-profile d-flex align-items-center mb-2">
-                                        <img src="images/food3.jpg" alt="User profile picture" class="rounded-circle" style="width: 40px; height: 40px;">
-                                        <span><strong>Mike Johnson</strong></span>
-                                        <span class="text-muted">- 5 days ago</span>
-                                    </div>
-                                    <p>Not a fan of the fries, but the chicken was amazing. I bought the 12-piece bucket and it was enough for a party!</p>
+                                <p>Great burgers and fast service. Highly recommend! I bought a meal for my family and everyone loved it!</p>
+                            </div>
+                            <!-- Comment 3 -->
+                            <div class="comment card-item mb-3">
+                                <div class="user-profile d-flex align-items-center mb-2">
+                                    <img src="images/food3.jpg" alt="User profile picture" class="rounded-circle" style="width: 40px; height: 40px;">
+                                    <span><strong>Mike Johnson</strong></span>
+                                    <span class="text-muted">- 5 days ago</span>
                                 </div>
+                                <p>Not a fan of the fries, but the chicken was amazing. I bought the 12-piece bucket and it was enough for a party!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Apply Filters</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Restaurant-info -->
+    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reviewModalLabel">Restaurant Info</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3700.8220401291637!2d96.09048487374693!3d21.941391855811773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30cb6d66ca891955%3A0xadc9227066fe2903!2sKFC%20The%20Move%2C%20Mingalar%20Mandalay!5e0!3m2!1sen!2smm!4v1713443954726!5m2!1sen!2smm" width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <h5><?php echo $results[0]['restaurant_name']; ?></h5>
+                    <div>
+                        <div>
+                            <p id="restaurant-address">
+                                <i class="bi bi-geo-alt fs-3 mx-2"></i>
+                                <?php echo $results[0]['address']; ?>
+                                <i id="copy-icon" class="bi bi-copy fs-5 mx-3" style="cursor: pointer;"></i>
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                <i class="bi bi-clock mx-3 fs-4"></i> Now open until 20:00
+                                <!-- Add a button to toggle the full schedule -->
+                                <span id="toggle-schedule" style="color: blue; cursor: pointer;">Show more</span>
+                            </p>
+                            <!-- Full schedule initially hidden -->
+                            <div id="full-schedule" style="display: none;margin-left:3.5rem;">
+                                Monday - Sunday: 08:30 - 20:00
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Apply Filters</button>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Restaurant-info -->
-        <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="reviewModalLabel">Restaurant Info</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3700.8220401291637!2d96.09048487374693!3d21.941391855811773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30cb6d66ca891955%3A0xadc9227066fe2903!2sKFC%20The%20Move%2C%20Mingalar%20Mandalay!5e0!3m2!1sen!2smm!4v1713443954726!5m2!1sen!2smm" width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <h5><?php echo $results[0]['restaurant_name']; ?></h5>
-                        <div>
-                            <div>
-                                <p id="restaurant-address">
-                                    <i class="bi bi-geo-alt fs-3 mx-2"></i>
-                                    <?php echo $results[0]['address']; ?>
-                                    <i id="copy-icon" class="bi bi-copy fs-5 mx-3" style="cursor: pointer;"></i>
-                                </p>
-                            </div>
-                            <div>
-                                <p>
-                                    <i class="bi bi-clock mx-3 fs-4"></i> Now open until 20:00
-                                    <!-- Add a button to toggle the full schedule -->
-                                    <span id="toggle-schedule" style="color: blue; cursor: pointer;">Show more</span>
-                                </p>
-                                <!-- Full schedule initially hidden -->
-                                <div id="full-schedule" style="display: none;margin-left:3.5rem;">
-                                    Monday - Sunday: 08:30 - 20:00
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
     </div>
     <hr>
 
@@ -296,7 +313,7 @@ $promotions = $promotion_controller->getPromotionByRestaurant($restaurant_id);
                 ?>
             </ul>
             <div class=" cart-noti px-2">
-                <button id="loadModelButton" class="fs-3 navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" data-user-id="<?php echo $user_id; ?>" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <button id="loadModelButton" class="fs-3 navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" data-user-id="<?php echo isset($user_id) ? $user_id : ''; ?>" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <i id="cart-icon" class="bi bi-cart4 text-dark"></i>
                     <span id="cart-count" class="badge badge-pill badge-danger">0</span>
                 </button>
@@ -417,7 +434,7 @@ $promotions = $promotion_controller->getPromotionByRestaurant($restaurant_id);
                     </div>
                 <?php endforeach; ?>
             </div>
-            <div class="position-absolute bottom-0 start-50 translate-middle">
+            <div class="sticky-bottom d-flex justify-content-center">
                 <button class="btn login px-5" id="checkoutBtn">Review Order</button>
             </div>
         </div>
@@ -449,6 +466,11 @@ include_once __DIR__ . "/layout/footer.php";
         document.body.removeChild(tempInput);
 
         alert("Code copied to clipboard: " + voucherCode);
+    }
+
+    // 显示登录警告的函数
+    function showLoginAlert() {
+        $('.login-alert').fadeIn().delay(3000).fadeOut();
     }
 </script>
 
@@ -521,13 +543,42 @@ include_once __DIR__ . "/layout/footer.php";
                     });
             });
         });
+
+        // 为所有加号按钮添加点击事件
+        document.querySelectorAll('.item-add').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // 检查用户是否登录
+                <?php if (!isset($_SESSION['id'])): ?>
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showLoginAlert();
+                    return false;
+                <?php endif; ?>
+            });
+        });
     });
 </script>
 
 <script>
-    var restaurantId = <?php echo json_encode($restaurant_id); ?>;
+    // 显示登录警告的函数
+    function showLoginAlert() {
+        $('.login-alert').fadeIn().delay(3000).fadeOut();
+    }
 
+    // 在文档加载完成后执行
     $(document).ready(function() {
+        // 为所有加号按钮添加点击事件
+        $('.item-add').on('click', function(e) {
+            // 检查用户是否登录
+            <?php if (!isset($_SESSION['id'])): ?>
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                showLoginAlert();
+                return false;
+            <?php endif; ?>
+        });
+
+        // 其余代码保持不变...
         updateCartCount()
 
         var item_id = <?php echo $item['item_id']; ?>;
